@@ -5,18 +5,19 @@ require 'solidus_quick_rma/version'
 Gem::Specification.new do |s|
   s.name        = 'solidus_quick_rma'
   s.version     = SolidusQuickRma::VERSION
-  s.summary     = 'TODO'
-  s.description = 'TODO'
+  s.summary     = 'A quick way to create an RMA for Solidus'
+  s.description = 'Adds a quick way to deal with Return Authorizations in the Solidus Backend'
   s.license     = 'BSD-3-Clause'
 
-  # s.author    = 'You'
-  # s.email     = 'you@example.com'
-  # s.homepage  = 'http://www.example.com'
+  s.author    = 'Braden Douglass'
+  s.email     = 'braden.douglass@gmail.com'
+  s.homepage  = 'https://www.glossier.com'
 
   s.files = Dir["{app,config,db,lib}/**/*", 'LICENSE', 'Rakefile', 'README.md']
   s.test_files = Dir['test/**/*']
 
-  s.add_dependency 'solidus_core', '~> 1.0'
+  s.add_dependency 'solidus_core', '~> 1.4'
+  s.add_dependency 'solidus_backend', '~> 1.4'
 
   s.add_development_dependency 'capybara'
   s.add_development_dependency 'poltergeist'
