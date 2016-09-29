@@ -9,6 +9,6 @@ RSpec.feature 'Return Button Under Order#edit', type: :feature do
   end
 
   scenario 'displays the button' do
-    expect(page).to have_content 'Return/Exchange'
+    expect(page).to have_content 'Return Or Exchange'
   end
 end
