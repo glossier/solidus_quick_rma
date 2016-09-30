@@ -11,4 +11,9 @@ RSpec.feature 'Return Button Under Order#edit', type: :feature do
   scenario 'displays the button' do
     expect(page).to have_content 'Return Or Exchange'
   end
+
+  scenario 'clicks through to the rma/return section' do
+    click_on 'Return Or Exchange'
+    expect(page.current_url).to include "#{order.number}/return_authorizations"
+  end
 end
