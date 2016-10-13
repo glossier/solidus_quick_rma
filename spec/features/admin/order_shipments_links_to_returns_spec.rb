@@ -16,4 +16,9 @@ RSpec.feature 'Return Button Under Order#edit', type: :feature do
     click_on 'Return Or Exchange'
     expect(page.current_url).to include "#{order.number}/return_authorizations"
   end
+
+  scenario 'only displays on order edit page' do
+    visit spree.admin_orders_path
+    expect(page).to_not have_content 'Return Or Exchange'
+  end
 end
