@@ -1,17 +1,5 @@
 <%= render :partial => 'spree/admin/shared/order_tabs', :locals => { :current => 'Return Authorizations' } %>
 
-<% content_for :page_actions do %>
-  <% if @order.shipments.any? &:shipped? %>
-    <li>
-      <% if can? :create, Spree::ReturnAuthorization %>
-        <%= button_link_to Spree.t(:new_return_authorization), new_admin_order_return_authorization_url(@order) %>
-      <% end %>
-    </li>
-  <% end %>
-<% end %>
-
-<% admin_breadcrumb(plural_resource_name(Spree::ReturnAuthorization)) %>
-
 <% if @order.shipments.any?(&:shipped?) || @order.return_authorizations.any? %>
   <fieldset>
     <legend>Returns</legend>
@@ -38,4 +26,7 @@
   </fieldset>
 <% end %>
 
-<div id="new_authorized_return"></div>
+<%= content_tag(:div, 
+                '',
+                id: 'new_authorized_return', 
+                data: { reasons: @reasons.to_json }) %>
