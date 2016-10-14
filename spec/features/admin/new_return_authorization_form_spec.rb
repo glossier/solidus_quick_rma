@@ -22,4 +22,10 @@ RSpec.feature 'Return Authorization Listing Form', type: :feature, js: true do
       expect(page.find('#new_authorized_return')['data-reasons']).to include reason.name
     end
   end
+
+  feature 'renders reason dropdown menu' do
+    scenario 'with options from the reasons data attribute' do
+      expect(page).to have_select('return-reasons', selected: reason.name)
+    end
+  end
 end

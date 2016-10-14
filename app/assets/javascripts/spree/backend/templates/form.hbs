@@ -1,5 +1,11 @@
 <fieldset>
   <legend>New Return</legend>
+  <label for="reasons">Reason for return/exchange</label>
+  <select id="return-reasons" name="reasons">
+    {{#each reasons}}
+      <option value="{{id}}">{{name}}</option>
+    {{/each}}
+  </select>
   <table>
     <thead></thead>
     <tbody>
