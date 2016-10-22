@@ -3,7 +3,15 @@ services:
   web:
     build: .
     volumes:
-      - .:/home/solidus_quick_rma/repo
+      - .:/src/repo
+      - .bundle:/src/gems/
       - ./keys:/root/.ssh/
+    volumes_from:
+      - bundle_cache
     ports:
       - '3000:3000'
+
+  bundle_cache:
+    image: busybox
+    volumes:
+      - /src/gems
