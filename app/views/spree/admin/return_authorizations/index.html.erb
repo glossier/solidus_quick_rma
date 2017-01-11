@@ -1,0 +1,32 @@
+<%= render :partial => 'spree/admin/shared/order_tabs', :locals => { :current => 'Return Authorizations' } %>
+
+<% if @order.shipments.any?(&:shipped?) || @order.return_authorizations.any? %>
+  <fieldset>
+    <legend>Returns</legend>
+    <table class="index">
+      <thead data-hook="rma_header">
+        <tr>
+          <th><%= Spree::ReturnAuthorization.human_attribute_name(:number) %></th>
+          <th><%= Spree::ReturnAuthorization.human_attribute_name(:state) %></th>
+          <th><%= Spree::ReturnAuthorization.human_attribute_name(:pre_tax_total) %></th>
+          <th><%= Spree::ReturnAuthorization.human_attribute_name(:created_at) %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @return_authorizations.each do |return_authorization| %>
+          <tr id="<%= spree_dom_id(return_authorization) %>" data-hook="rma_row" class="<%= cycle('odd', 'even')%>">
+            <td><%= return_authorization.number %></td>
+            <td><%= Spree.t(return_authorization.state.downcase) %></td>
+            <td><%= return_authorization.display_pre_tax_total.to_html %></td>
+            <td><%= pretty_time(return_authorization.created_at) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </fieldset>
+<% end %>
+
+<%= content_tag(:div, 
+                '',
+                id: 'new_authorized_return', 
+                data: { reasons: @reasons.to_json }) %>

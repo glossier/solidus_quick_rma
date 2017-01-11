@@ -33,4 +33,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'sqlite3'
   s.add_development_dependency 'launchy'
   s.add_development_dependency 'tzinfo-data'
+  s.add_development_dependency 'pry-byebug'
 end
